@@ -13,7 +13,7 @@ class_name IngredientData
 
 
 ## Initialize the ingredient with data on construction. Fills data with default values if no parameters are given
-func _init(ingredient_name: String = "", base_quantity: float = 0, unit: GlobalTypes.Unit = GlobalTypes.Unit.NONE) -> void:
+func _init(ingredient_name := "", base_quantity := 0.0, unit := GlobalTypes.Unit.NONE) -> void:
 	self.ingredient_name = ingredient_name
 	self.base_quantity = base_quantity
 	self.unit = unit

@@ -12,7 +12,7 @@ class_name RecipeData
 
 
 ## Initialize a new recipe data with values. Uses default values when no parameters are given
-func _init(recipe_name: String = "", ingredients: Array[IngredientData] = [], texture: Texture2D = preload("res://icon.svg")) -> void:
+func _init(recipe_name := "", ingredients: Array[IngredientData] = [], texture : Texture2D = preload("res://icon.svg")) -> void:
 	self.recipe_name = recipe_name
 	self.ingredients = ingredients
 	self.texture = texture

@@ -3,7 +3,7 @@ extends Control
 ## Class to manager recipe book ui components
 
 ## UI scene for recipe preview
-@onready var recipe_preview_scene = preload("res://scenes/recipe_preview.tscn")
+@onready var recipe_preview_scene : PackedScene = preload("res://scenes/recipe_preview.tscn")
 ## The recipe book data
 @export var recipe_book_data : RecipeBookData
 

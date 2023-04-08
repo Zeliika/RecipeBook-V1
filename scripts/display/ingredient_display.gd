@@ -13,14 +13,14 @@ class_name IngredientDisplay
 
 
 ## Initialize ingredient ui fields. Use default values if no parameter is given
-func init(base_quantity:float = 0, unit:GlobalTypes.Unit = GlobalTypes.Unit.NONE, title:String = "") -> void:
+func init(base_quantity := 0.0, unit := GlobalTypes.Unit.NONE, title := "") -> void:
 	quantity_text_field.text = str(base_quantity)
 	unit_label.text = GlobalTypes.unit_to_string(unit)
 	name_label.text = title
 
 
 ## update the quantity text field
-func set_quantity(new_quantity : float):
+func set_quantity(new_quantity : float) -> void:
 		quantity_text_field.text = str(new_quantity)
 
 

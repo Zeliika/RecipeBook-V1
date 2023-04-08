@@ -7,44 +7,44 @@
 
 [sub_resource type="Resource" id="Resource_ggmt3"]
 script = ExtResource("1_mlxvy")
-title = "Rote Bete"
-base_amount = 300.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 2
 
 [sub_resource type="Resource" id="Resource_812l8"]
 script = ExtResource("1_mlxvy")
-title = "Salz, Pfeffer, Muskat"
-base_amount = -1.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 0
 
 [sub_resource type="Resource" id="Resource_vxtbm"]
 script = ExtResource("1_mlxvy")
-title = "Ei(er)"
-base_amount = 2.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 0
 
 [sub_resource type="Resource" id="Resource_wtpt6"]
 script = ExtResource("1_mlxvy")
-title = "Mehl"
-base_amount = 400.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 2
 
 [sub_resource type="Resource" id="Resource_ytky2"]
 script = ExtResource("1_mlxvy")
-title = "Gemüsebrühe"
-base_amount = 50.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 1
 
 [sub_resource type="Resource" id="Resource_ggiu7"]
 script = ExtResource("1_mlxvy")
-title = "Milch"
-base_amount = 100.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 1
 
 [sub_resource type="Resource" id="Resource_ayj4o"]
 script = ExtResource("1_mlxvy")
-title = "Butter"
-base_amount = -1.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 0
 
 [sub_resource type="Resource" id="Resource_essgr"]
@@ -55,44 +55,44 @@ texture = ExtResource("3_bmfrk")
 
 [sub_resource type="Resource" id="Resource_7yuhw"]
 script = ExtResource("1_mlxvy")
-title = "Rote Bete"
-base_amount = 300.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 2
 
 [sub_resource type="Resource" id="Resource_a3hed"]
 script = ExtResource("1_mlxvy")
-title = "Salz, Pfeffer, Muskat"
-base_amount = -1.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 0
 
 [sub_resource type="Resource" id="Resource_1mf3p"]
 script = ExtResource("1_mlxvy")
-title = "Ei(er)"
-base_amount = 2.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 0
 
 [sub_resource type="Resource" id="Resource_8ika0"]
 script = ExtResource("1_mlxvy")
-title = "Mehl"
-base_amount = 400.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 2
 
 [sub_resource type="Resource" id="Resource_8x780"]
 script = ExtResource("1_mlxvy")
-title = "Gemüsebrühe"
-base_amount = 50.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 1
 
 [sub_resource type="Resource" id="Resource_xs0ye"]
 script = ExtResource("1_mlxvy")
-title = "Milch"
-base_amount = 100.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 1
 
 [sub_resource type="Resource" id="Resource_nb24n"]
 script = ExtResource("1_mlxvy")
-title = "Butter"
-base_amount = -1.0
+ingredient_name = ""
+base_quantity = 0.0
 unit = 0
 
 [sub_resource type="Resource" id="Resource_xjyfr"]
