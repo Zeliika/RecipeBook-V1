@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://kl58e1sjjuut"]
+
+[ext_resource type="Texture2D" uid="uid://dgqgmrcmlwmg4" path="res://icon.svg" id="1_emvka"]
+[ext_resource type="Script" path="res://scripts/display/recipe_preview_display.gd" id="1_ndxjh"]
+
+[node name="RecipePreview" type="HBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("1_ndxjh")
+
+[node name="RecipeTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_emvka")
+
+[node name="RecipeName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+text = "Name"
+horizontal_alignment = 1
