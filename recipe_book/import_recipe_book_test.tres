@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="RecipeBookData" load_steps=21 format=3 uid="uid://busf0b1pndv7l"]
+
+[ext_resource type="Script" path="res://scripts/data/ingredient_data.gd" id="1_mlxvy"]
+[ext_resource type="Script" path="res://scripts/data/recipe_book_data.gd" id="1_rjfre"]
+[ext_resource type="Script" path="res://scripts/data/recipe_data.gd" id="2_883q8"]
+[ext_resource type="Texture2D" uid="uid://dgqgmrcmlwmg4" path="res://icon.svg" id="3_bmfrk"]
+
+[sub_resource type="Resource" id="Resource_ggmt3"]
+script = ExtResource("1_mlxvy")
+title = "Rote Bete"
+base_amount = 300.0
+unit = 2
+
+[sub_resource type="Resource" id="Resource_812l8"]
+script = ExtResource("1_mlxvy")
+title = "Salz, Pfeffer, Muskat"
+base_amount = -1.0
+unit = 0
+
+[sub_resource type="Resource" id="Resource_vxtbm"]
+script = ExtResource("1_mlxvy")
+title = "Ei(er)"
+base_amount = 2.0
+unit = 0
+
+[sub_resource type="Resource" id="Resource_wtpt6"]
+script = ExtResource("1_mlxvy")
+title = "Mehl"
+base_amount = 400.0
+unit = 2
+
+[sub_resource type="Resource" id="Resource_ytky2"]
+script = ExtResource("1_mlxvy")
+title = "Gemüsebrühe"
+base_amount = 50.0
+unit = 1
+
+[sub_resource type="Resource" id="Resource_ggiu7"]
+script = ExtResource("1_mlxvy")
+title = "Milch"
+base_amount = 100.0
+unit = 1
+
+[sub_resource type="Resource" id="Resource_ayj4o"]
+script = ExtResource("1_mlxvy")
+title = "Butter"
+base_amount = -1.0
+unit = 0
+
+[sub_resource type="Resource" id="Resource_essgr"]
+script = ExtResource("2_883q8")
+recipe_name = "Rote Bete Spätzle"
+ingredients = Array[ExtResource("1_mlxvy")]([SubResource("Resource_ggmt3"), SubResource("Resource_812l8"), SubResource("Resource_vxtbm"), SubResource("Resource_wtpt6"), SubResource("Resource_ytky2"), SubResource("Resource_ggiu7"), SubResource("Resource_ayj4o")])
+texture = ExtResource("3_bmfrk")
+
+[sub_resource type="Resource" id="Resource_7yuhw"]
+script = ExtResource("1_mlxvy")
+title = "Rote Bete"
+base_amount = 300.0
+unit = 2
+
+[sub_resource type="Resource" id="Resource_a3hed"]
+script = ExtResource("1_mlxvy")
+title = "Salz, Pfeffer, Muskat"
+base_amount = -1.0
+unit = 0
+
+[sub_resource type="Resource" id="Resource_1mf3p"]
+script = ExtResource("1_mlxvy")
+title = "Ei(er)"
+base_amount = 2.0
+unit = 0
+
+[sub_resource type="Resource" id="Resource_8ika0"]
+script = ExtResource("1_mlxvy")
+title = "Mehl"
+base_amount = 400.0
+unit = 2
+
+[sub_resource type="Resource" id="Resource_8x780"]
+script = ExtResource("1_mlxvy")
+title = "Gemüsebrühe"
+base_amount = 50.0
+unit = 1
+
+[sub_resource type="Resource" id="Resource_xs0ye"]
+script = ExtResource("1_mlxvy")
+title = "Milch"
+base_amount = 100.0
+unit = 1
+
+[sub_resource type="Resource" id="Resource_nb24n"]
+script = ExtResource("1_mlxvy")
+title = "Butter"
+base_amount = -1.0
+unit = 0
+
+[sub_resource type="Resource" id="Resource_xjyfr"]
+script = ExtResource("2_883q8")
+recipe_name = "Rote Bete Spätzle 2"
+ingredients = Array[ExtResource("1_mlxvy")]([SubResource("Resource_7yuhw"), SubResource("Resource_a3hed"), SubResource("Resource_1mf3p"), SubResource("Resource_8ika0"), SubResource("Resource_8x780"), SubResource("Resource_xs0ye"), SubResource("Resource_nb24n")])
+texture = ExtResource("3_bmfrk")
+
+[resource]
+script = ExtResource("1_rjfre")
+recipes = Array[ExtResource("2_883q8")]([SubResource("Resource_essgr"), SubResource("Resource_xjyfr")])

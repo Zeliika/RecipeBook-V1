@@ -1,0 +1,71 @@
+{
+	"recipes" : [
+		{
+			"name" : "Rote Bete Spätzle",
+			"ingredients" : [
+				{
+					"name" : "Rote Bete",
+					"quantity" : 300,
+					"unit" : 2
+				},{
+					"name" : "Salz, Pfeffer, Muskat",
+					"quantity" : -1,
+					"unit" : 0
+				},{
+					"name" : "Ei(er)",
+					"quantity" : 2,
+					"unit" : 0
+				},{
+					"name" : "Mehl",
+					"quantity" : 400,
+					"unit" : 2
+				},{
+					"name" : "Gemüsebrühe",
+					"quantity" : 50,
+					"unit" : 1
+				},{
+					"name" : "Milch",
+					"quantity" : 100,
+					"unit" : 1
+				},{
+					"name" : "Butter",
+					"quantity" : -1,
+					"unit" : 0
+				},
+			]
+		},{
+			"name" : "Rote Bete Spätzle 2",
+			"ingredients" : [
+				{
+					"name" : "Rote Bete",
+					"quantity" : 300,
+					"unit" : 2
+				},{
+					"name" : "Salz, Pfeffer, Muskat",
+					"quantity" : -1,
+					"unit" : 0
+				},{
+					"name" : "Ei(er)",
+					"quantity" : 2,
+					"unit" : 0
+				},{
+					"name" : "Mehl",
+					"quantity" : 400,
+					"unit" : 2
+				},{
+					"name" : "Gemüsebrühe",
+					"quantity" : 50,
+					"unit" : 1
+				},{
+					"name" : "Milch",
+					"quantity" : 100,
+					"unit" : 1
+				},{
+					"name" : "Butter",
+					"quantity" : -1,
+					"unit" : 0
+				},
+			]
+		},
+	]
+}
