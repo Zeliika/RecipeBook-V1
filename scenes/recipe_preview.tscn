@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://kl58e1sjjuut"]
+[gd_scene load_steps=4 format=3 uid="uid://kl58e1sjjuut"]
 
 [ext_resource type="Texture2D" uid="uid://dgqgmrcmlwmg4" path="res://icon.svg" id="1_emvka"]
 [ext_resource type="Script" path="res://scripts/display/recipe_preview_display.gd" id="1_ndxjh"]
 
-[node name="RecipePreview" type="HBoxContainer"]
+[sub_resource type="Theme" id="Theme_8k3rc"]
+
+[node name="RecipePreview" type="ColorRect"]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.203922, 0.117647, 1)
+script = ExtResource("1_ndxjh")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -13,15 +27,15 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-script = ExtResource("1_ndxjh")
 
-[node name="RecipeTexture" type="TextureRect" parent="."]
+[node name="RecipeTexture" type="TextureRect" parent="Container"]
 layout_mode = 2
 texture = ExtResource("1_emvka")
 
-[node name="RecipeName" type="Label" parent="."]
+[node name="RecipeName" type="Label" parent="Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
+theme = SubResource("Theme_8k3rc")
 text = "Name"
 horizontal_alignment = 1

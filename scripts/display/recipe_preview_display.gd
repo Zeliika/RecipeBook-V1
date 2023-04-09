@@ -1,7 +1,7 @@
-extends HBoxContainer
+extends Control
 
-@onready var recipe_texture: TextureRect = $RecipeTexture
-@onready var recipe_name: Label = $RecipeName
+@onready var recipe_texture: TextureRect = $Container/RecipeTexture
+@onready var recipe_name: Label = $Container/RecipeName
 
 var recipe_data : RecipeData
 
