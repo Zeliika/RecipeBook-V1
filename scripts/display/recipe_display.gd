@@ -38,4 +38,4 @@ func calc_quantity(new_quantity, ingredient_index) -> void:
 
 ## return to recipe list when return button is pressed
 func _on_return_to_menu_pressed() -> void:
-	pass
+	SceneManager.load_main_menu()

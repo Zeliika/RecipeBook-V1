@@ -39,3 +39,5 @@ mouse_filter = 1
 theme = SubResource("Theme_8k3rc")
 text = "Name"
 horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
