@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RecipeData" load_steps=8 format=3 uid="uid://dcmp0cr5qslr2"]
+[gd_resource type="Resource" script_class="RecipeData" load_steps=7 format=3 uid="uid://dcmp0cr5qslr2"]
 
 [ext_resource type="Script" path="res://scripts/data/ingredient_data.gd" id="1_aacex"]
 [ext_resource type="Script" path="res://scripts/data/recipe_data.gd" id="2_t2wkb"]
@@ -6,30 +6,24 @@
 
 [sub_resource type="Resource" id="Resource_g3qqg"]
 script = ExtResource("1_aacex")
-title = "Mehl"
-base_amount = 500.0
-unit = 1
+ingredient_name = "Mehl"
+base_quantity = 500.0
+unit = 2
 
 [sub_resource type="Resource" id="Resource_bwjhn"]
 script = ExtResource("1_aacex")
-title = "Ei(er)"
-base_amount = 2.0
-unit = 2
+ingredient_name = "Milch"
+base_quantity = -1.0
+unit = 0
 
 [sub_resource type="Resource" id="Resource_b0ycs"]
 script = ExtResource("1_aacex")
-title = "Salz"
-base_amount = 0.5
-unit = 2
-
-[sub_resource type="Resource" id="Resource_hj561"]
-script = ExtResource("1_aacex")
-title = "Milch"
-base_amount = -1.0
-unit = 4
+ingredient_name = "Salz"
+base_quantity = 0.5
+unit = 3
 
 [resource]
 script = ExtResource("2_t2wkb")
 recipe_name = "Nockerln"
-ingredients = Array[ExtResource("1_aacex")]([SubResource("Resource_g3qqg"), SubResource("Resource_bwjhn"), SubResource("Resource_b0ycs"), SubResource("Resource_hj561")])
+ingredients = Array[ExtResource("1_aacex")]([SubResource("Resource_g3qqg"), SubResource("Resource_bwjhn"), SubResource("Resource_b0ycs")])
 texture = ExtResource("3_h5gpb")

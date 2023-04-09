@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wn71ng00tnoc"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_book_display.gd" id="1_prxun"]
-[ext_resource type="Resource" uid="uid://busf0b1pndv7l" path="res://recipe_book/import_recipe_book_test.tres" id="2_qkxtr"]
+[ext_resource type="Resource" uid="uid://cga70267wnlfy" path="res://recipe_book/test_recipe_book.tres" id="2_64275"]
 
 [node name="RecipeBookDisplay" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_prxun")
-recipe_book_data = ExtResource("2_qkxtr")
+recipe_book_data = ExtResource("2_64275")
 
 [node name="RecipeList" type="VBoxContainer" parent="."]
 layout_mode = 1
