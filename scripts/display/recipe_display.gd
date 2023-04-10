@@ -6,7 +6,8 @@ class_name RecipeDisplay
 @onready var title_label: Label = $TitleLabel
 ## The container holding the ingredient ui components
 @onready var ingredient_list_container: VBoxContainer = $IngredientListContainer
-
+## The text field containing the recipe description
+@onready var description: Label = $Description
 ## the scene file for displaying ingredients
 var ingredient_display_scene : PackedScene = preload("res://scenes/ingredient_display.tscn")
 
@@ -17,6 +18,7 @@ var recipe_data : RecipeData
 ## initialize recipe ui and fill fields with relevant data
 func init(recipe_data : RecipeData) -> void:
 	self.recipe_data = recipe_data
+
 	title_label.text = recipe_data.recipe_name
 
 	## initialize ingredient list
@@ -25,6 +27,9 @@ func init(recipe_data : RecipeData) -> void:
 		ingredient_list_container.add_child(display)
 		display.init(ingredient.base_quantity,ingredient.unit, ingredient.ingredient_name)
 		display.get_quantity_text_field().text_submitted.connect(calc_quantity.bind(display.get_index()))
+
+	## initialize description label
+	description.text = recipe_data.description
 
 
 ## calculate new quantity for all ingredients based on their base ratios when user enters

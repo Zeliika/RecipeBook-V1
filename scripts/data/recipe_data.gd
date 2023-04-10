@@ -9,10 +9,12 @@ class_name RecipeData
 @export var ingredients : Array[IngredientData]
 ## An image displaying the recipe result.
 @export var texture : Texture2D = preload("res://icon.svg")
-
+## Description or instructions for recipe
+@export_multiline var description : String
 
 ## Initialize a new recipe data with values. Uses default values when no parameters are given
 func _init(recipe_name := "", ingredients: Array[IngredientData] = [], texture : Texture2D = preload("res://icon.svg")) -> void:
 	self.recipe_name = recipe_name
 	self.ingredients = ingredients
 	self.texture = texture
+	self.description = description

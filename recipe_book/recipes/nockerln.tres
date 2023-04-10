@@ -27,3 +27,5 @@ script = ExtResource("2_t2wkb")
 recipe_name = "Nockerln"
 ingredients = Array[ExtResource("1_aacex")]([SubResource("Resource_g3qqg"), SubResource("Resource_bwjhn"), SubResource("Resource_b0ycs")])
 texture = ExtResource("3_h5gpb")
+description = "Zutaten verrühren
+Wasser kochen"

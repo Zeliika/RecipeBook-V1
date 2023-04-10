@@ -53,4 +53,19 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DescriptionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 356.0
+offset_right = 135.0
+offset_bottom = 382.0
+text = "Beschreibung:"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 396.0
+offset_right = 1021.0
+offset_bottom = 552.0
+
 [connection signal="pressed" from="ReturnToMenuButton" to="." method="_on_return_to_menu_pressed"]
