@@ -44,3 +44,7 @@ func calc_quantity(new_quantity, ingredient_index) -> void:
 ## return to recipe list when return button is pressed
 func _on_return_to_menu_pressed() -> void:
 	SceneManager.load_main_menu()
+
+
+func _on_edit_button_pressed() -> void:
+	SceneManager.load_edit_recipe(recipe_data)

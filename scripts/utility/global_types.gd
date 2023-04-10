@@ -14,8 +14,8 @@ enum Unit {
 }
 
 
-## Convert Unit value to readable string
-static func unit_to_string(unit : Unit) -> String:
+## Convert Unit value to unit short form
+static func unit_to_label(unit : Unit) -> String:
 	match (unit):
 		Unit.MILLILITERS:
 			return "mL"
@@ -27,4 +27,21 @@ static func unit_to_string(unit : Unit) -> String:
 			return "El"
 
 	## return empty string when unit is NONE or invalid
+	return ""
+
+
+## Convert Unit value to full word text
+static func unit_to_text(unit : Unit) -> String:
+	match (unit):
+		Unit.MILLILITERS:
+			return "Milliliter"
+		Unit.GRAMS:
+			return "Gramm"
+		Unit.TEASPOON:
+			return "Teelöffel"
+		Unit.TABLESPOON:
+			return "Esslöffel"
+		Unit.NONE:
+			return "ohne Einheit"
+	## return empty string when unit is invalid
 	return ""
