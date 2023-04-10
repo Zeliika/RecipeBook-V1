@@ -43,5 +43,6 @@ static func unit_to_text(unit : Unit) -> String:
 			return "Esslöffel"
 		Unit.NONE:
 			return "ohne Einheit"
+
 	## return empty string when unit is invalid
 	return ""

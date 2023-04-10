@@ -1,6 +1,8 @@
 extends Node
 class_name RecipeDisplay
 
+## Class controlling the recipe UI do display recipe data
+
 
 ## The label displaying the recipe title
 @onready var title_label: Label = $TitleLabel
@@ -17,8 +19,10 @@ var recipe_data : RecipeData
 
 ## initialize recipe ui and fill fields with relevant data
 func init(recipe_data : RecipeData) -> void:
+	## save recipe data for later use
 	self.recipe_data = recipe_data
 
+	## initialize recipe name label
 	title_label.text = recipe_data.recipe_name
 
 	## initialize ingredient list
@@ -45,6 +49,6 @@ func calc_quantity(new_quantity, ingredient_index) -> void:
 func _on_return_to_menu_pressed() -> void:
 	SceneManager.load_main_menu()
 
-
+## Load recipe edit scene with current recipe when edit button is pressed
 func _on_edit_button_pressed() -> void:
 	SceneManager.load_edit_recipe(recipe_data)
