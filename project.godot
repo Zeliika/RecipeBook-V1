@@ -18,3 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneManager="*res://scripts/utility/scene_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
