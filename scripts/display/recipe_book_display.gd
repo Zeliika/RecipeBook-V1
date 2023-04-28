@@ -5,7 +5,7 @@ extends Control
 ## UI scene for recipe preview
 @onready var recipe_preview_scene : PackedScene = preload("res://scenes/recipe_preview.tscn")
 ## The recipe book data
-@export var recipe_book_data : RecipeBookData
+var recipe_book_data : RecipeBookData = RecipeBookManager.get_recipe_book_data()
 
 
 ## contruct ui when scene is loaded
@@ -13,5 +13,10 @@ func _ready() -> void:
 	## initialize list of previews for recipes stored on the recipe book
 	for recipe_data in recipe_book_data.recipes:
 		var recipe_preview = recipe_preview_scene.instantiate()
-		$RecipeList.add_child(recipe_preview)
+		%RecipeList.add_child(recipe_preview)
 		recipe_preview.set_recipe(recipe_data)
+
+
+
+func _on_add_recipe_button_pressed() -> void:
+	SceneManager.load_edit_recipe()

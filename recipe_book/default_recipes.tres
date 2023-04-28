@@ -1,0 +1,89 @@
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://wli4ma810iqc"]
+
+[sub_resource type="GDScript" id="GDScript_f468v"]
+script/source = "extends Resource
+class_name IngredientData
+
+## Class for holding data of an ingredient
+
+
+## The name of the ingredient
+@export var ingredient_name : String
+## The base quantity of the ingredient
+@export var base_quantity : float
+## The unit used with the ingredient
+@export var unit : GlobalTypes.Unit
+
+
+## Initialize the ingredient with data on construction. Fills data with default values if no parameters are given
+func _init(ingredient_name := \"\", base_quantity := 0.0, unit := GlobalTypes.Unit.NONE) -> void:
+	self.ingredient_name = ingredient_name
+	self.base_quantity = base_quantity
+	self.unit = unit
+"
+
+[sub_resource type="Resource" id="Resource_gtoxv"]
+script = SubResource("GDScript_f468v")
+ingredient_name = "Mehl"
+base_quantity = 200.0
+unit = 2
+
+[sub_resource type="Resource" id="Resource_etcar"]
+script = SubResource("GDScript_f468v")
+ingredient_name = "Milch"
+base_quantity = 100.0
+unit = 1
+
+[sub_resource type="Resource" id="Resource_oaoqw"]
+script = SubResource("GDScript_f468v")
+ingredient_name = "Salz"
+base_quantity = 1.0
+unit = 3
+
+[sub_resource type="GDScript" id="GDScript_r6ge3"]
+script/source = "extends Resource
+class_name RecipeData
+
+## Class to store and manage recipe data
+
+## The name of the recipe
+@export var recipe_name : String
+## The list of ingredients
+@export var ingredients : Array[IngredientData]
+## An image displaying the recipe result.
+@export var texture : Texture2D = preload(\"res://icon.svg\")
+## Description or instructions for recipe
+@export_multiline var description : String
+
+## Initialize a new recipe data with values. Uses default values when no parameters are given
+func _init(recipe_name := \"\", ingredients: Array[IngredientData] = [], texture : Texture2D = preload(\"res://icon.svg\")) -> void:
+	self.recipe_name = recipe_name
+	self.ingredients = ingredients
+	self.texture = texture
+	self.description = description
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7j3i1"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="Resource" id="Resource_08e7k"]
+script = SubResource("GDScript_r6ge3")
+recipe_name = "Nockerln"
+ingredients = [SubResource("Resource_gtoxv"), SubResource("Resource_etcar"), SubResource("Resource_oaoqw")]
+texture = SubResource("CompressedTexture2D_7j3i1")
+description = "Blabla"
+
+[sub_resource type="GDScript" id="GDScript_oxho5"]
+script/source = "extends Resource
+class_name RecipeBookData
+
+## Class to store and manage recipe book data
+
+
+## The list of recipes in this recipe book
+@export var recipes : Array[RecipeData]
+"
+
+[resource]
+script = SubResource("GDScript_oxho5")
+recipes = [SubResource("Resource_08e7k")]

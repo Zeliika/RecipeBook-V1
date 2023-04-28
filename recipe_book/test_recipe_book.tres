@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="RecipeBookData" load_steps=3 format=3 uid="uid://cga70267wnlfy"]
-
-[ext_resource type="Resource" uid="uid://dcmp0cr5qslr2" path="res://recipe_book/recipes/nockerln.tres" id="1_w6kpk"]
-[ext_resource type="Script" path="res://scripts/data/recipe_book_data.gd" id="2_orrwo"]
-
-[resource]
-script = ExtResource("2_orrwo")
-recipes = Array[Resource("res://scripts/data/recipe_data.gd")]([ExtResource("1_w6kpk"), ExtResource("1_w6kpk")])

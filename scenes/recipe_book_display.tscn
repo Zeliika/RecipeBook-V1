@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://wn71ng00tnoc"]
+[gd_scene load_steps=2 format=3 uid="uid://wn71ng00tnoc"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_book_display.gd" id="1_prxun"]
-[ext_resource type="Resource" uid="uid://cga70267wnlfy" path="res://recipe_book/test_recipe_book.tres" id="2_64275"]
 
 [node name="RecipeBookDisplay" type="Control"]
 layout_mode = 3
@@ -11,13 +10,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_prxun")
-recipe_book_data = ExtResource("2_64275")
 
-[node name="RecipeList" type="VBoxContainer" parent="."]
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SearchSpaceTODO" type="ColorRect" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecipeList" type="VBoxContainer" parent="VSplitContainer/VSplitContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="AddRecipeButton" type="Button" parent="VSplitContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="ImportRecipeButton" type="Button" parent="VSplitContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+text = "Import"
+
+[node name="ExportRecipeButton#" type="Button" parent="VSplitContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+text = "Export"
+
+[connection signal="pressed" from="VSplitContainer/VSplitContainer/HBoxContainer/AddRecipeButton" to="." method="_on_add_recipe_button_pressed"]

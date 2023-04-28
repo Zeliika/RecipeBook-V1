@@ -5,11 +5,11 @@ class_name IngredientDisplay
 
 
 ## The quantity text field
-@onready var quantity_text_field: LineEdit = $QuantityTextField
+@onready var quantity_text_field: LineEdit = %QuantityTextField
 ## The label displaying the unit
-@onready var unit_label: Label = $UnitLabel
+@onready var unit_label: Label = %UnitLabel
 ## The label displaying the name of the ingredient
-@onready var name_label: Label = $NameLabel
+@onready var name_label: Label = %NameLabel
 
 
 ## Initialize ingredient ui fields. Use default values if no parameter is given

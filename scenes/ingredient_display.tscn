@@ -13,16 +13,19 @@ grow_vertical = 2
 script = ExtResource("1_drk07")
 
 [node name="QuantityTextField" type="LineEdit" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 placeholder_text = "100"
 
 [node name="UnitLabel" type="Label" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "mL"
 
 [node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Mehl"

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4bbd08m31bc8"]
-
-[ext_resource type="Script" path="res://scripts/utility/recipe_importer.gd" id="1_042p6"]
-[ext_resource type="Resource" uid="uid://busf0b1pndv7l" path="res://recipe_book/import_recipe_book_test.tres" id="2_dd7h6"]
-
-[node name="Importer" type="Node"]
-script = ExtResource("1_042p6")
-recipe_book_data = ExtResource("2_dd7h6")

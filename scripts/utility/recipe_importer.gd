@@ -1,31 +1,20 @@
 extends Node
-class_name RecipeImporter
+class_name RecipeImporterExporter
 
 @export var recipe_book_data : RecipeBookData
+const FILENAME = "res://recipe_book/recipes/recipes_test.json"
+
 
 #func _ready() -> void:
 #	import_from_json()
 
+static func export_to_json(recipe_book_data : RecipeBookData) -> void:
+	var json_result : String = JSON.stringify(RecipeBookManager.data_to_dictionary(), "\t", false)
+	var file = FileAccess.open(FILENAME, FileAccess.WRITE)
+	file.store_string(json_result)
 
-func import_from_json() -> void:
+static func import_from_json() -> RecipeBookData:
 	var json := JSON.new()
-	var text := FileAccess.open("res://recipe_book/recipes/recipes_test.json", FileAccess.READ).get_as_text()
+	var text := FileAccess.open(FILENAME, FileAccess.READ).get_as_text()
 	var parse_result := json.parse(text)
-
-	if not parse_result == OK:
-		return
-
-	var data = json.get_data()
-
-	for recipe in data["recipes"]:
-		var ingredients :Array[IngredientData] = []
-		for ingredient in recipe["ingredients"]:
-			var ingredient_data = IngredientData.new(ingredient["name"], ingredient["quantity"], ingredient["unit"])
-			ingredients.append(ingredient_data)
-
-		var recipe_data = RecipeData.new(recipe["name"], ingredients)
-		recipe_book_data.recipes.append(recipe_data)
-
-	ResourceSaver.save(recipe_book_data,"res://recipe_book/import_recipe_book_test.tres" )
-
-
+	return RecipeBookManager.dictionary_to_data(json.data)

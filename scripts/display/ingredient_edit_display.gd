@@ -4,11 +4,11 @@ extends HBoxContainer
 
 
 ## The text field for quantity
-@onready var quantity_text_field: LineEdit = $QuantityTextField
+@onready var quantity_text_field: LineEdit = %QuantityTextField
 ## The dropdown for unit selection
-@onready var unit_dropdown: OptionButton = $UnitDropdown
+@onready var unit_dropdown: OptionButton = %UnitDropdown
 ## The text field containing the ingredient name
-@onready var name_edit: LineEdit = $NameLabel
+@onready var name_edit: LineEdit = %NameLabel
 
 
 func _ready() -> void:
@@ -18,7 +18,9 @@ func _ready() -> void:
 
 
 ## Initialize gui fields with data from ingredient
-func init(ingredient_data : IngredientData) -> void:
+func init(ingredient_data : IngredientData = null) -> void:
+	if ingredient_data == null:
+		return
 	quantity_text_field.text = str(ingredient_data.base_quantity)
 	unit_dropdown.select(ingredient_data.unit)
 	name_edit.text = ingredient_data.ingredient_name
@@ -31,3 +33,6 @@ func get_ingredient_data() -> IngredientData:
 	ingredient_data.unit = unit_dropdown.get_selected_id()
 	ingredient_data.ingredient_name = name_edit.text
 	return ingredient_data
+
+func get_button() -> Button:
+	return %Button
