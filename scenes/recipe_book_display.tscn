@@ -55,4 +55,7 @@ text = "Import"
 layout_mode = 2
 text = "Export"
 
-[connection signal="pressed" from="VSplitContainer/VSplitContainer/HBoxContainer/AddRecipeButton" to="." method="_on_add_recipe_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer/ImportRecipeButton" to="." method="_on_import_recipe_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer/ExportRecipeButton#" to="." method="_on_export_recipe_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer/AddRecipeButton" to="." method="_on_add_recipe_button_pressed"]
