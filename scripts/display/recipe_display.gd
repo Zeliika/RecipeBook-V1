@@ -52,3 +52,9 @@ func _on_return_to_menu_pressed() -> void:
 ## Load recipe edit scene with current recipe when edit button is pressed
 func _on_edit_button_pressed() -> void:
 	SceneManager.load_edit_recipe(recipe_data)
+
+
+func _notification(what: int) -> void:
+	## return to main scene ich back button on mobile is pressed
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		_on_return_to_menu_pressed()
