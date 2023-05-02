@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://wn71ng00tnoc"]
+[gd_scene load_steps=8 format=3 uid="uid://wn71ng00tnoc"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_book_display.gd" id="1_prxun"]
 [ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="2_bc7tq"]
+[ext_resource type="Resource" uid="uid://fut818nsg3iv" path="res://scripts/utility/session_variables.tres" id="2_rpd57"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj2t5"]
+atlas = ExtResource("2_bc7tq")
+region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pyptb"]
 atlas = ExtResource("2_bc7tq")
@@ -25,6 +30,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_prxun")
+session_variables = ExtResource("2_rpd57")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -35,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
 title = "Export"
 size = Vector2i(957, 218)
 mode = 2
@@ -55,9 +62,20 @@ grow_vertical = 2
 [node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="SearchSpaceTODO" type="ColorRect" parent="MarginContainer/VSplitContainer"]
+[node name="SearchBar" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="TextSearchField" type="LineEdit" parent="MarginContainer/VSplitContainer/SearchBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ApplyFilterButton" type="Button" parent="MarginContainer/VSplitContainer/SearchBar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = SubResource("AtlasTexture_pj2t5")
+expand_icon = true
 
 [node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/VSplitContainer"]
 layout_mode = 2
@@ -100,6 +118,7 @@ icon_alignment = 1
 expand_icon = true
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/SearchBar/ApplyFilterButton" to="." method="_on_apply_filter_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer/ImportRecipeButton" to="." method="_on_import_recipe_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer/ExportRecipeButton#" to="." method="_on_export_recipe_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer/AddRecipeButton" to="." method="_on_add_recipe_button_pressed"]
