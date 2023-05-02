@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://d35ltnh6yd5ye"]
+[gd_scene load_steps=8 format=3 uid="uid://d35ltnh6yd5ye"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_edit_display.gd" id="1_wex3u"]
+[ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="2_cqskg"]
 
-[node name="RecipeEditDisplay" type="Control"]
-layout_mode = 3
+[sub_resource type="AtlasTexture" id="AtlasTexture_a66fo"]
+atlas = ExtResource("2_cqskg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3i8r"]
+atlas = ExtResource("2_cqskg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4trf7"]
+load_path = "res://.godot/imported/icons.svg-0ee3045dd5ac81814b7c281e8ab0aa82.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fksf7"]
+atlas = SubResource("CompressedTexture2D_4trf7")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6iaw"]
+atlas = SubResource("CompressedTexture2D_4trf7")
+region = Rect2(448, 0, 64, 64)
+
+[node name="RecipeEditDisplay" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,77 +30,98 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wex3u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
 
-[node name="TitleEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"TitleLineEdit"
 text = "Titel"
+alignment = 1
+caret_blink = true
+caret_blink_interval = 0.5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="IngredientTitleLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="IngredientTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Zutaten:"
 
-[node name="Container" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubMarginContainer"
+
+[node name="Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="IngredientListContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Container"]
+[node name="IngredientListContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AddIngredientButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Container"]
+[node name="AddIngredientButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Zutat hinzufügen"
+icon = SubResource("AtlasTexture_a66fo")
+expand_icon = true
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Beschreibung"
 
-[node name="Description" type="TextEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubMarginContainer"
+
+[node name="Description" type="TextEdit" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 placeholder_text = "Beschreibung eingeben"
 scroll_fit_content_height = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 2
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Reset"
+icon = SubResource("AtlasTexture_s3i8r")
+icon_alignment = 1
+expand_icon = true
 
-[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Cancel"
+icon = SubResource("AtlasTexture_fksf7")
+icon_alignment = 1
+expand_icon = true
 
-[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Save"
+icon = SubResource("AtlasTexture_c6iaw")
+icon_alignment = 1
+expand_icon = true
 
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Container/AddIngredientButton" to="." method="_on_add_ingredient_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container/AddIngredientButton" to="." method="_on_add_ingredient_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

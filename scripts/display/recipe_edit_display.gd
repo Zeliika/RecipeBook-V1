@@ -86,3 +86,4 @@ func _on_save_button_pressed() -> void:
 
 func _on_add_ingredient_button_pressed() -> void:
 	add_ingredient_edit_line(null)
+

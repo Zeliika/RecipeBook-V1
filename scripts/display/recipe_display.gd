@@ -1,15 +1,15 @@
-extends Node
+extends Control
 class_name RecipeDisplay
 
 ## Class controlling the recipe UI do display recipe data
 
 
 ## The label displaying the recipe title
-@onready var title_label: Label = $TitleLabel
+@onready var title_label: Label = %TitleLabel
 ## The container holding the ingredient ui components
-@onready var ingredient_list_container: VBoxContainer = $IngredientListContainer
+@onready var ingredient_list_container: VBoxContainer = %IngredientListContainer
 ## The text field containing the recipe description
-@onready var description: Label = $Description
+@onready var description: Label = %Description
 ## the scene file for displaying ingredients
 var ingredient_display_scene : PackedScene = preload("res://scenes/ingredient_display.tscn")
 

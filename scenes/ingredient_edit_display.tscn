@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcg8ahpijh1db"]
+[gd_scene load_steps=3 format=3 uid="uid://bcg8ahpijh1db"]
 
 [ext_resource type="Script" path="res://scripts/display/ingredient_edit_display.gd" id="1_hussk"]
+[ext_resource type="Texture2D" uid="uid://bj7uc7vtd51lv" path="res://ui/icon_atlas.tres" id="2_bs333"]
 
 [node name="IngredientEditDisplay" type="HBoxContainer"]
 anchors_preset = 15
@@ -32,5 +33,9 @@ placeholder_text = "Zutat"
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-text = "-"
+theme_type_variation = &"DeleteButton"
+icon = ExtResource("2_bs333")
+icon_alignment = 1
+expand_icon = true

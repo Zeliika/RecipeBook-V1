@@ -12,6 +12,8 @@ var recipe_book_data : RecipeBookData = RecipeBookManager.get_recipe_book_data()
 
 ## contruct ui when scene is loaded
 func _ready() -> void:
+#	size = DisplayServer.get_display_safe_area().size
+#	position = DisplayServer.get_display_safe_area().position
 	## initialize list of previews for recipes stored on the recipe book
 	for recipe_data in recipe_book_data.recipes:
 		var recipe_preview = recipe_preview_scene.instantiate()

@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv7eba4svbs61"]
+[gd_scene load_steps=5 format=3 uid="uid://bv7eba4svbs61"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_display.gd" id="1_urxdx"]
+[ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="3_wst6j"]
 
-[node name="RecipeDisplay" type="Control"]
-layout_mode = 3
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0idh"]
+atlas = ExtResource("3_wst6j")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ait0j"]
+atlas = ExtResource("3_wst6j")
+region = Rect2(64, 0, 64, 64)
+
+[node name="RecipeDisplay" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,73 +19,76 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_urxdx")
 
-[node name="ReturnToMenuButton" type="Button" parent="."]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-offset_right = 45.0
-offset_bottom = 31.0
-text = "<"
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
 
-[node name="EditButton" type="Button" parent="."]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -50.0
-offset_bottom = 50.0
-grow_horizontal = 0
-text = "Edit"
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+dragger_visibility = 1
 
-[node name="TitleLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.053
-anchor_right = 1.0
-anchor_bottom = 0.048
-offset_left = -0.0560036
-offset_bottom = 0.896
-grow_horizontal = 2
+[node name="TitleBar" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ReturnToMenuButton" type="Button" parent="MarginContainer/VSplitContainer/TitleBar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = SubResource("AtlasTexture_o0idh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VSplitContainer/TitleBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_type_variation = &"TitelLabel"
 text = "Titel"
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 
-[node name="IngredientTitleLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 68.0
-offset_right = 87.0
-offset_bottom = 94.0
+[node name="EditButton" type="Button" parent="MarginContainer/VSplitContainer/TitleBar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = SubResource("AtlasTexture_ait0j")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IngredientTitleLabel" type="Label" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
 text = "Zutaten:"
 
-[node name="IngredientListContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.051
-anchor_top = 0.159
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -0.752003
-offset_top = -2.03201
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubMarginContainer"
 
-[node name="DescriptionLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 356.0
-offset_right = 135.0
-offset_bottom = 382.0
+[node name="IngredientListContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
 text = "Beschreibung:"
 
-[node name="Description" type="Label" parent="."]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 396.0
-offset_right = 1021.0
-offset_bottom = 552.0
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubMarginContainer"
 
-[connection signal="pressed" from="ReturnToMenuButton" to="." method="_on_return_to_menu_pressed"]
-[connection signal="pressed" from="EditButton" to="." method="_on_edit_button_pressed"]
+[node name="Description" type="Label" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer@ScrollContainer@VBoxContainer@BottomBar" type="HBoxContainer" parent="MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[connection signal="pressed" from="MarginContainer/VSplitContainer/TitleBar/ReturnToMenuButton" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/TitleBar/EditButton" to="." method="_on_edit_button_pressed"]
