@@ -7,16 +7,16 @@
 atlas = ExtResource("2_cqskg")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3i8r"]
-atlas = ExtResource("2_cqskg")
-region = Rect2(384, 0, 64, 64)
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4trf7"]
 load_path = "res://.godot/imported/icons.svg-0ee3045dd5ac81814b7c281e8ab0aa82.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fksf7"]
 atlas = SubResource("CompressedTexture2D_4trf7")
 region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3i8r"]
+atlas = ExtResource("2_cqskg")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6iaw"]
 atlas = SubResource("CompressedTexture2D_4trf7")
@@ -93,24 +93,25 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 placeholder_text = "Beschreibung eingeben"
-scroll_fit_content_height = true
+wrap_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 2
 
-[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-icon = SubResource("AtlasTexture_s3i8r")
-icon_alignment = 1
-expand_icon = true
-
 [node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 icon = SubResource("AtlasTexture_fksf7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+icon = SubResource("AtlasTexture_s3i8r")
 icon_alignment = 1
 expand_icon = true
 
@@ -122,6 +123,6 @@ icon_alignment = 1
 expand_icon = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container/AddIngredientButton" to="." method="_on_add_ingredient_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

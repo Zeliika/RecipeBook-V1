@@ -10,11 +10,16 @@ class_name IngredientDisplay
 @onready var unit_label: Label = %UnitLabel
 ## The label displaying the name of the ingredient
 @onready var name_label: Label = %NameLabel
+@onready var placeholder: PanelContainer = %Placeholder
 
+func _ready() -> void:
+	placeholder.custom_minimum_size = quantity_text_field.size
 
 ## Initialize ingredient ui fields. Use default values if no parameter is given
 func init(base_quantity := 0.0, unit := GlobalTypes.Unit.NONE, title := "") -> void:
 	quantity_text_field.text = str(base_quantity)
+	quantity_text_field.visible = base_quantity > 0
+	placeholder.visible = base_quantity <= 0
 	unit_label.text = GlobalTypes.unit_to_label(unit)
 	name_label.text = title
 
