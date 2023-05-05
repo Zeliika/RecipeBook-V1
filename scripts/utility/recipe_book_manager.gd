@@ -22,6 +22,7 @@ func data_to_dictionary() -> Dictionary:
 	for recipe_data in recipe_book_data.recipes:
 		var recipe_dictionary : Dictionary = {}
 		recipe_dictionary["name"] = recipe_data.recipe_name
+		recipe_dictionary["tags"] = recipe_data.tags
 		recipe_dictionary["description"] = recipe_data.description
 		var ingredients : Array[Dictionary] = []
 
@@ -45,8 +46,12 @@ func dictionary_to_data(recipe_book_dictionary : Dictionary) -> RecipeBookData:
 
 	for recipe_dictionary in recipe_book_dictionary["recipes"]:
 		var recipe_data : RecipeData = RecipeData.new()
-		recipe_data.recipe_name = recipe_dictionary["name"]
-		recipe_data.description = recipe_dictionary["description"]
+		if recipe_dictionary.has("name"):
+			recipe_data.recipe_name = recipe_dictionary["name"]
+		if recipe_dictionary.has("tags"):
+			recipe_data.tags = recipe_dictionary["tags"]
+		if recipe_dictionary.has("description"):
+			recipe_data.description = recipe_dictionary["description"]
 		var ingredients : Array[IngredientData] = []
 
 		for ingredient_dictionary in recipe_dictionary["ingredients"]:

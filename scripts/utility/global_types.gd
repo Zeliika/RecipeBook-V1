@@ -67,3 +67,59 @@ static func unit_to_text(unit : Unit) -> String:
 
 	## return empty string when unit is invalid
 	return ""
+
+static func tag_to_text(tag : Tag) -> String:
+	match (tag):
+		Tag.SAVOURY:
+			return "herzhaft"
+		Tag.SWEET:
+			return "süß"
+		Tag.SPICY:
+			return "scharf"
+		Tag.APPETIZER:
+			return "Vorspeise"
+		Tag.MAIN_DISH:
+			return "Hauptspeise"
+		Tag.DESSERT:
+			return "Nachtisch"
+		Tag.FINGERFOOD:
+			return "Fingerfood"
+		Tag.SALAD:
+			return "Salat"
+		Tag.BAKE:
+			return "Auflauf"
+		Tag.SNACKS:
+			return "Knabberzeug"
+		Tag.SWEETS:
+			return "Süßigkeiten"
+		Tag.VEGETARIAN:
+			return "vegetarisch"
+		Tag.VEGAN:
+			return "vegan"
+		Tag.LACTOSE_FREE:
+			return "laktosefrei"
+		Tag.FAST:
+			return "schnell"
+		Tag.EASY_TO_PREP:
+			return "gut vorzubereiten"
+	return ""
+
+
+enum Tag {
+	SAVOURY,
+	SWEET,
+	SPICY,
+	APPETIZER,
+	MAIN_DISH,
+	DESSERT,
+	FINGERFOOD,
+	SALAD,
+	BAKE,
+	SNACKS,
+	SWEETS,
+	VEGETARIAN,
+	VEGAN,
+	LACTOSE_FREE,
+	FAST,
+	EASY_TO_PREP,
+}

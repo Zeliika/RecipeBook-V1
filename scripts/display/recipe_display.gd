@@ -8,10 +8,14 @@ class_name RecipeDisplay
 @onready var title_label: Label = %TitleLabel
 ## The container holding the ingredient ui components
 @onready var ingredient_list_container: VBoxContainer = %IngredientListContainer
+## The container holding the tag ui components
+@onready var tag_container: HFlowContainer = %TagContainer
 ## The text field containing the recipe description
 @onready var description: Label = %Description
 ## the scene file for displaying ingredients
 var ingredient_display_scene : PackedScene = preload("res://scenes/ingredient_display.tscn")
+## the scene file for displaying tags
+var tag_display_scene : PackedScene = preload("res://scenes/tag_display.tscn")
 
 ## the data of the recipe that is displayed
 var recipe_data : RecipeData
@@ -24,6 +28,12 @@ func init(recipe_data : RecipeData) -> void:
 
 	## initialize recipe name label
 	title_label.text = recipe_data.recipe_name
+
+	## initialize tag list
+	for tag in recipe_data.tags:
+		var display = tag_display_scene.instantiate()
+		tag_container.add_child(display)
+		display.init(GlobalTypes.tag_to_text(tag))
 
 	## initialize ingredient list
 	for ingredient in recipe_data.ingredients:

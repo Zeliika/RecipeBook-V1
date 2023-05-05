@@ -12,9 +12,12 @@ class_name RecipeData
 ## Description or instructions for recipe
 @export_multiline var description : String
 
+@export var tags : Array = []
+
 ## Initialize a new recipe data with values. Uses default values when no parameters are given
-func _init(recipe_name := "", ingredients: Array[IngredientData] = [], texture : Texture2D = null) -> void:
+func _init(recipe_name := "", ingredients: Array[IngredientData] = [], texture : Texture2D = null, tags : Array = []) -> void:
 	self.recipe_name = recipe_name
 	self.ingredients = ingredients
 	self.texture = texture
 	self.description = description
+	self.tags = tags

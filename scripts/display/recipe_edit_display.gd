@@ -8,11 +8,17 @@ extends Control
 @onready var ingredient_list_container: VBoxContainer = %IngredientListContainer
 ## The buttton to add an ingredient
 @onready var add_ingredient_button: Button = %AddIngredientButton
+@onready var tag_selector : MenuButton = %TagSelector
 ## The recipe that is edited or null if new recipe is added
 var recipe_data : RecipeData
 ## The scene to display and edit ingredients
 var ingredient_edit_display_scene : PackedScene = preload("res://scenes/ingredient_edit_display.tscn")
 
+func _ready() -> void:
+	## initialize dropdown with values from unit enum
+	tag_selector.get_popup().hide_on_checkable_item_selection = false
+	for tag in GlobalTypes.Tag.values():
+		tag_selector.get_popup().add_check_item(GlobalTypes.tag_to_text(tag), tag)
 
 ## Initialize UI fields
 func init(recipe_data : RecipeData = null) -> void:
@@ -86,4 +92,6 @@ func _on_save_button_pressed() -> void:
 
 func _on_add_ingredient_button_pressed() -> void:
 	add_ingredient_edit_line(null)
+
+
 
