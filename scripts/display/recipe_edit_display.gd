@@ -14,11 +14,15 @@ var recipe_data : RecipeData
 ## The scene to display and edit ingredients
 var ingredient_edit_display_scene : PackedScene = preload("res://scenes/ingredient_edit_display.tscn")
 
+var tag_popup : PopupMenu
+
 func _ready() -> void:
 	## initialize dropdown with values from unit enum
-	tag_selector.get_popup().hide_on_checkable_item_selection = false
-	for tag in GlobalTypes.Tag.values():
-		tag_selector.get_popup().add_check_item(GlobalTypes.tag_to_text(tag), tag)
+	tag_popup = tag_selector.get_popup()
+	tag_popup.hide_on_checkable_item_selection = false
+	for tag in GlobalTypes.get_tags_alphabetical():
+		tag_popup.add_check_item(GlobalTypes.tag_to_text(tag), tag)
+	tag_popup.connect("index_pressed", select_tag)
 
 ## Initialize UI fields
 func init(recipe_data : RecipeData = null) -> void:
@@ -32,12 +36,19 @@ func init(recipe_data : RecipeData = null) -> void:
 	## Initialize recipe name field
 	title_edit.text = recipe_data.recipe_name
 
+	for i in range(0, tag_popup.item_count):
+		if recipe_data.tags.has(tag_popup.get_item_id(i)):
+			tag_popup.set_item_checked(i, true)
+
 	## Initialize ingredient list ui
 	for ingredient in recipe_data.ingredients:
 		add_ingredient_edit_line(ingredient)
 
 	## Initialize description text field
 	description_edit.text = recipe_data.description
+
+func select_tag(index : int) -> void:
+	tag_popup.set_item_checked(index, not tag_popup.is_item_checked(index))
 
 func add_ingredient_edit_line(ingredient : IngredientData) -> void:
 	var display = ingredient_edit_display_scene.instantiate()
@@ -71,6 +82,10 @@ func _on_cancel_button_pressed() -> void:
 func _on_save_button_pressed() -> void:
 	## Read data from UI fields
 	var recipe_name := title_edit.text
+	var tag_list : Array[GlobalTypes.Tag] = []
+	for i in range(0, tag_popup.item_count):
+		if tag_popup.is_item_checked(i):
+			tag_list.append(tag_popup.get_item_id(i))
 	var ingredient_list : Array[IngredientData] = []
 	for ingredient_edit_display in ingredient_list_container.get_children():
 		ingredient_list.append(ingredient_edit_display.get_ingredient_data())
@@ -82,6 +97,7 @@ func _on_save_button_pressed() -> void:
 		RecipeBookManager.add_recipe(recipe_data)
 	## Update recipe data with data read from UI fields previously
 	recipe_data.recipe_name = recipe_name
+	recipe_data.tags = tag_list
 	recipe_data.ingredients = ingredient_list
 	recipe_data.description = description
 	RecipeBookManager.save_recipe_book_data()

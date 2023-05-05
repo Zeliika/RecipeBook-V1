@@ -102,24 +102,46 @@ static func tag_to_text(tag : Tag) -> String:
 			return "schnell"
 		Tag.EASY_TO_PREP:
 			return "gut vorzubereiten"
-	return ""
+		Tag.SOUP:
+			return "Suppe"
+		Tag.DIP:
+			return "Dip"
+		Tag.COOKIES:
+			return "Kekse"
+		Tag.CAKE:
+			return "Kuchen/Torte"
+		Tag.EXPERIMENTAL:
+			return "experimentell"
+		Tag.SAUCE:
+			return "Soße"
+	return "missing tag %s" %tag
 
+static func get_tags_alphabetical() -> Array:
+	var tags = Tag.values()
+	tags.sort_custom(func(a, b) : return tag_to_text(a) < tag_to_text(b))
+	return tags
 
 enum Tag {
-	SAVOURY,
-	SWEET,
-	SPICY,
-	APPETIZER,
-	MAIN_DISH,
-	DESSERT,
-	FINGERFOOD,
-	SALAD,
-	BAKE,
-	SNACKS,
-	SWEETS,
-	VEGETARIAN,
-	VEGAN,
-	LACTOSE_FREE,
-	FAST,
-	EASY_TO_PREP,
+	SAVOURY = 0,
+	SWEET = 1,
+	SPICY = 2,
+	APPETIZER = 3,
+	MAIN_DISH = 4,
+	DESSERT = 5,
+	FINGERFOOD = 6,
+	SALAD = 7,
+	BAKE = 8,
+	SNACKS = 9,
+	SWEETS = 10,
+	VEGETARIAN  = 11,
+	VEGAN = 12,
+	LACTOSE_FREE = 13,
+	FAST = 14,
+	EASY_TO_PREP = 15,
+	SOUP = 16,
+	DIP = 17,
+	COOKIES = 18,
+	CAKE = 19,
+	EXPERIMENTAL = 20,
+	SAUCE = 21,
 }

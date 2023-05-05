@@ -16,7 +16,6 @@ static func import_from_json() -> RecipeBookData:
 		return RecipeBookData.new()
 	var text := FileAccess.open(FILENAME, FileAccess.READ).get_as_text()
 	var parse_result := json.parse(text)
-	print(parse_result)
 	if parse_result == Error.OK:
 		return RecipeBookManager.dictionary_to_data(json.data)
 

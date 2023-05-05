@@ -53,6 +53,7 @@ recipe_name = "Rote Bete Spätzle"
 ingredients = Array[ExtResource("1_mlxvy")]([SubResource("Resource_ggmt3"), SubResource("Resource_812l8"), SubResource("Resource_vxtbm"), SubResource("Resource_wtpt6"), SubResource("Resource_ytky2"), SubResource("Resource_ggiu7"), SubResource("Resource_ayj4o")])
 texture = ExtResource("3_bmfrk")
 description = ""
+tags = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_7yuhw"]
 script = ExtResource("1_mlxvy")
@@ -102,6 +103,7 @@ recipe_name = "Rote Bete Spätzle 2"
 ingredients = Array[ExtResource("1_mlxvy")]([SubResource("Resource_7yuhw"), SubResource("Resource_a3hed"), SubResource("Resource_1mf3p"), SubResource("Resource_8ika0"), SubResource("Resource_8x780"), SubResource("Resource_xs0ye"), SubResource("Resource_nb24n")])
 texture = ExtResource("3_bmfrk")
 description = ""
+tags = Array[int]([])
 
 [resource]
 script = ExtResource("1_rjfre")

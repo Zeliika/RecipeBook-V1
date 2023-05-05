@@ -49,7 +49,8 @@ func dictionary_to_data(recipe_book_dictionary : Dictionary) -> RecipeBookData:
 		if recipe_dictionary.has("name"):
 			recipe_data.recipe_name = recipe_dictionary["name"]
 		if recipe_dictionary.has("tags"):
-			recipe_data.tags = recipe_dictionary["tags"]
+			for tag in recipe_dictionary["tags"]:
+				recipe_data.tags.append(tag as GlobalTypes.Tag)
 		if recipe_dictionary.has("description"):
 			recipe_data.description = recipe_dictionary["description"]
 		var ingredients : Array[IngredientData] = []
