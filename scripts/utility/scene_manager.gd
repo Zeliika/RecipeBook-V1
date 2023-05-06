@@ -14,10 +14,12 @@ extends Node
 
 @onready var is_mobile := false
 
+var recipe_book : RecipeBookDisplay
 
-#func _ready() -> void:
-#	is_mobile = OS.get_name() == "Android"
-
+func get_recipe_book() -> RecipeBookDisplay:
+	if recipe_book == null:
+		recipe_book = get_node("/root/RecipeBookDisplay")
+	return recipe_book
 
 ## Load the recipe display scene
 func load_recipe_scene(recipe_data : RecipeData) -> void:
@@ -25,14 +27,13 @@ func load_recipe_scene(recipe_data : RecipeData) -> void:
 	var recipe_display = recipe_scene.instantiate()
 	root.add_child(recipe_display)
 	recipe_display.init(recipe_data)
-#	correct_position(recipe_display)
+
 
 
 ## Load the main recipe book scene
 func load_main_menu() -> void:
 	clear()
-	var scene = recipe_book_scene.instantiate()
-	root.add_child(scene)
+	get_recipe_book().show()
 #	correct_position(scene)
 
 ## Load the recipe edit scene. Pass null if new recipe is added
@@ -41,6 +42,7 @@ func load_edit_recipe(recipe_data: RecipeData = null) -> void:
 	var recipe_edit_display = recipe_edit_scene.instantiate()
 	root.add_child(recipe_edit_display)
 	recipe_edit_display.init(recipe_data)
+	
 #	correct_position(recipe_edit_display)
 
 
@@ -48,8 +50,9 @@ func load_edit_recipe(recipe_data: RecipeData = null) -> void:
 func clear() -> void:
 	for child in root.get_children():
 		## Only delete scene if it is not the scene manager
-		if child != self and not child is RecipeBookManager: #TODO improve check
+		if child != self and not child is RecipeBookManager and not child is RecipeBookDisplay: #TODO improve check
 			child.queue_free()
+	get_recipe_book().hide()
 
 
 func correct_position(scene : Control) -> void:
