@@ -15,11 +15,11 @@ func add_recipe(recipe_data : RecipeData, do_save : bool = false) -> void:
 	if do_save:
 		save_recipe_book_data()
 
-func data_to_dictionary() -> Dictionary:
+func data_to_dictionary(data_to_convert : RecipeBookData = recipe_book_data) -> Dictionary:
 	var recipe_book_dictionary : Dictionary = {}
 	var recipes : Array[Dictionary] = []
 
-	for recipe_data in recipe_book_data.recipes:
+	for recipe_data in data_to_convert.recipes:
 		var recipe_dictionary : Dictionary = {}
 		recipe_dictionary["name"] = recipe_data.recipe_name
 		recipe_dictionary["tags"] = recipe_data.tags

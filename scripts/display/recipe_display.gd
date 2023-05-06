@@ -12,6 +12,7 @@ class_name RecipeDisplay
 @onready var tag_container: HFlowContainer = %TagContainer
 ## The text field containing the recipe description
 @onready var description: Label = %Description
+@onready var file_dialog = $FileDialog
 ## the scene file for displaying ingredients
 var ingredient_display_scene : PackedScene = preload("res://scenes/ingredient_display.tscn")
 ## the scene file for displaying tags
@@ -68,3 +69,15 @@ func _notification(what: int) -> void:
 	## return to main scene ich back button on mobile is pressed
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		_on_return_to_menu_pressed()
+
+
+func _on_export_button_pressed():
+	file_dialog.set_current_file("%s.json" %recipe_data.recipe_name)
+	file_dialog.popup_centered_ratio(1.0)
+
+
+func _on_file_dialog_file_selected(path):
+	var export_recipe_data := RecipeBookData.new()
+	export_recipe_data.recipes.append(recipe_data)
+	RecipeImporterExporter.export_to_json(export_recipe_data,path)
+

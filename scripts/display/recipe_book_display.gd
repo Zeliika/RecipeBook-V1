@@ -16,13 +16,14 @@ var tag_popup : PopupMenu
 
 ## contruct ui when scene is loaded
 func _ready() -> void:
+	init_recipe_book()
 	## initialize list of previews for recipes stored on the recipe book
 	recipe_book_data.recipes.sort_custom(func (a, b): return a.recipe_name < b.recipe_name)
 	for recipe_data in recipe_book_data.recipes:
 		var recipe_preview = recipe_preview_scene.instantiate()
 		recipe_list.add_child(recipe_preview)
 		recipe_preview.set_recipe(recipe_data)
-	
+
 	## initialize dropdown with values from unit enum
 	tag_popup = tag_selector.get_popup()
 	tag_popup.hide_on_checkable_item_selection = false
@@ -30,6 +31,13 @@ func _ready() -> void:
 	for tag in GlobalTypes.get_tags_alphabetical():
 		tag_popup.add_check_item(GlobalTypes.tag_to_text(tag), tag)
 	tag_popup.connect("index_pressed", select_tag)
+
+func init_recipe_book():
+	recipe_book_data.recipes.sort_custom(func (a, b): return a.recipe_name < b.recipe_name)
+	for recipe_data in recipe_book_data.recipes:
+		var recipe_preview = recipe_preview_scene.instantiate()
+		recipe_list.add_child(recipe_preview)
+		recipe_preview.set_recipe(recipe_data)
 
 func select_tag(index : int) -> void:
 	if index == 0:
@@ -43,16 +51,28 @@ func _on_add_recipe_button_pressed() -> void:
 
 
 func _on_import_recipe_button_pressed() -> void:
-	pass # Replace with function body.
+	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_dialog.popup_centered_ratio(1.0)
+
 
 
 func _on_export_recipe_button_pressed() -> void:
+	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	file_dialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
 	file_dialog.set_current_file("recipe_export.json")
 	file_dialog.popup_centered_ratio(1)
 
 func _on_file_dialog_file_selected(path: String) -> void:
-	RecipeImporterExporter.export_to_json(recipe_book_data, path)
+	if file_dialog.file_mode == FileDialog.FILE_MODE_SAVE_FILE:
+		RecipeImporterExporter.export_to_json(recipe_book_data, path)
+	elif file_dialog.file_mode == FileDialog.FILE_MODE_OPEN_FILE:
+		var imported_data = RecipeImporterExporter.import_from_json(path)
+		recipe_book_data.recipes.append_array(imported_data.recipes)
+		RecipeBookManager.save_recipe_book_data()
+		for child in recipe_list.get_children():
+			child.queue_free()
+		init_recipe_book()
+
 
 func process_string(input : String) -> String:
 	return input.to_lower().replace("-"," ")
@@ -68,7 +88,7 @@ func filter_recipes(filter_text : String, filter_tag_list : Array[GlobalTypes.Ta
 				contains_search = true
 		for tag in filter_tag_list:
 			if not recipe_data.tags.has(tag):
-				contains_search = false 
+				contains_search = false
 		recipe_preview.visible = contains_search
 
 func _on_apply_filter_button_pressed() -> void:

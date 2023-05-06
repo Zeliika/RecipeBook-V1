@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://wn71ng00tnoc"]
+[gd_scene load_steps=8 format=3 uid="uid://wn71ng00tnoc"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_book_display.gd" id="1_prxun"]
 [ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="2_bc7tq"]
+[ext_resource type="PackedScene" uid="uid://bo7evqynvpnbb" path="res://scenes/export_file_dialog.tscn" id="2_grs5w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj2t5"]
 atlas = ExtResource("2_bc7tq")
@@ -38,16 +39,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FileDialog" type="FileDialog" parent="."]
+[node name="FileDialog" parent="." instance=ExtResource("2_grs5w")]
 unique_name_in_owner = true
-title = "Export"
-size = Vector2i(957, 218)
-mode = 2
-ok_button_text = "Save"
-mode_overrides_title = false
-access = 2
-filters = PackedStringArray("*.json")
-show_hidden_files = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

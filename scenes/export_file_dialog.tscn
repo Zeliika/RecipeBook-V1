@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bo7evqynvpnbb"]
+
+[node name="FileDialog" type="FileDialog"]
+title = "Export"
+size = Vector2i(957, 218)
+mode = 2
+ok_button_text = "Save"
+mode_overrides_title = false
+access = 2
+filters = PackedStringArray("*.json")

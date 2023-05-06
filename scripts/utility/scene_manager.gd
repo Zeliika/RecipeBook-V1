@@ -42,7 +42,7 @@ func load_edit_recipe(recipe_data: RecipeData = null) -> void:
 	var recipe_edit_display = recipe_edit_scene.instantiate()
 	root.add_child(recipe_edit_display)
 	recipe_edit_display.init(recipe_data)
-	
+
 #	correct_position(recipe_edit_display)
 
 

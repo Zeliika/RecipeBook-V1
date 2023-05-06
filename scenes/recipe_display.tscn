@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv7eba4svbs61"]
+[gd_scene load_steps=7 format=3 uid="uid://bv7eba4svbs61"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_display.gd" id="1_urxdx"]
+[ext_resource type="PackedScene" uid="uid://bo7evqynvpnbb" path="res://scenes/export_file_dialog.tscn" id="3_cxe2b"]
 [ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="3_wst6j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0idh"]
@@ -10,6 +11,10 @@ region = Rect2(64, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ait0j"]
 atlas = ExtResource("3_wst6j")
 region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l37b"]
+atlas = ExtResource("3_wst6j")
+region = Rect2(256, 0, 64, 64)
 
 [node name="RecipeDisplay" type="PanelContainer"]
 anchors_preset = 15
@@ -22,9 +27,8 @@ script = ExtResource("1_urxdx")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+[node name="VSplitContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-dragger_visibility = 1
 
 [node name="TitleBar" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
 layout_mode = 2
@@ -56,6 +60,7 @@ expand_icon = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VSplitContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/ScrollContainer"]
 layout_mode = 2
@@ -95,5 +100,22 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_vertical = 10
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="ExportButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+icon = SubResource("AtlasTexture_4l37b")
+expand_icon = true
+
+[node name="FileDialog" parent="." instance=ExtResource("3_cxe2b")]
+
 [connection signal="pressed" from="MarginContainer/VSplitContainer/TitleBar/ReturnToMenuButton" to="." method="_on_return_to_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/TitleBar/EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HBoxContainer/ExportButton" to="." method="_on_export_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

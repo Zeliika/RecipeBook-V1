@@ -5,4 +5,4 @@ class_name RecipeBookData
 
 
 ## The list of recipes in this recipe book
-@export var recipes : Array[RecipeData]
+@export var recipes : Array[RecipeData] = []
