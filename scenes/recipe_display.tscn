@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv7eba4svbs61"]
+[gd_scene load_steps=8 format=3 uid="uid://bv7eba4svbs61"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_display.gd" id="1_urxdx"]
 [ext_resource type="PackedScene" uid="uid://bo7evqynvpnbb" path="res://scenes/export_file_dialog.tscn" id="3_cxe2b"]
@@ -15,6 +15,10 @@ region = Rect2(64, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4l37b"]
 atlas = ExtResource("3_wst6j")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2eq3"]
+atlas = ExtResource("3_wst6j")
+region = Rect2(0, 0, 64, 64)
 
 [node name="RecipeDisplay" type="PanelContainer"]
 anchors_preset = 15
@@ -113,9 +117,22 @@ size_flags_vertical = 8
 icon = SubResource("AtlasTexture_4l37b")
 expand_icon = true
 
+[node name="DeleteRecipeButton" type="Button" parent="MarginContainer/VSplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = SubResource("AtlasTexture_d2eq3")
+icon_alignment = 1
+expand_icon = true
+
 [node name="FileDialog" parent="." instance=ExtResource("3_cxe2b")]
+
+[node name="ConfirmDeleteDialog" type="ConfirmationDialog" parent="."]
+dialog_text = "Soll das Rezept wirklich gelöscht werden?"
 
 [connection signal="pressed" from="MarginContainer/VSplitContainer/TitleBar/ReturnToMenuButton" to="." method="_on_return_to_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/TitleBar/EditButton" to="." method="_on_edit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HBoxContainer/ExportButton" to="." method="_on_export_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HBoxContainer/DeleteRecipeButton" to="." method="_on_delete_recipe_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="confirmed" from="ConfirmDeleteDialog" to="." method="_on_confirm_delete_dialog_confirmed"]

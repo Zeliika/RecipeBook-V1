@@ -13,6 +13,8 @@ class_name RecipeDisplay
 ## The text field containing the recipe description
 @onready var description: Label = %Description
 @onready var file_dialog = $FileDialog
+@onready var confirm_delete_dialog = $ConfirmDeleteDialog
+
 ## the scene file for displaying ingredients
 var ingredient_display_scene : PackedScene = preload("res://scenes/ingredient_display.tscn")
 ## the scene file for displaying tags
@@ -81,3 +83,15 @@ func _on_file_dialog_file_selected(path):
 	export_recipe_data.recipes.append(recipe_data)
 	RecipeImporterExporter.export_to_json(export_recipe_data,path)
 
+
+
+func _on_delete_recipe_button_pressed():
+	confirm_delete_dialog.popup_centered()
+
+
+
+func _on_confirm_delete_dialog_confirmed():
+	RecipeBookManager.delete_recipes([recipe_data])
+	get_tree().call_group("recipe_book", "init_recipe_book")
+	RecipeBookManager.save_recipe_book_data()
+	SceneManager.load_main_menu()

@@ -67,3 +67,7 @@ func dictionary_to_data(recipe_book_dictionary : Dictionary) -> RecipeBookData:
 
 	recipe_book_data.recipes = recipes
 	return recipe_book_data
+
+func delete_recipes(recipes_to_delete : Array[RecipeData]) -> void:
+	for recipe in recipes_to_delete:
+		recipe_book_data.recipes.erase(recipe)

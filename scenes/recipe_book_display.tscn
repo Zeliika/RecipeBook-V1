@@ -20,7 +20,7 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("2_bc7tq")
 region = Rect2(128, 0, 64, 64)
 
-[node name="RecipeBookDisplay" type="Control"]
+[node name="RecipeBookDisplay" type="Control" groups=["recipe_book"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
