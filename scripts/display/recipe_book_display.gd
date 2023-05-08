@@ -32,12 +32,17 @@ func _ready() -> void:
 		tag_popup.add_check_item(GlobalTypes.tag_to_text(tag), tag)
 	tag_popup.connect("index_pressed", select_tag)
 
-func init_recipe_book():
+func init_recipe_book() -> void:
 	recipe_book_data.recipes.sort_custom(func (a, b): return a.recipe_name < b.recipe_name)
 	for recipe_data in recipe_book_data.recipes:
 		var recipe_preview = recipe_preview_scene.instantiate()
 		recipe_list.add_child(recipe_preview)
 		recipe_preview.set_recipe(recipe_data)
+
+func refresh() -> void:
+	for child in recipe_list.get_children():
+			child.queue_free()
+	init_recipe_book()
 
 func select_tag(index : int) -> void:
 	if index == 0:
@@ -69,9 +74,7 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		var imported_data = RecipeImporterExporter.import_from_json(path)
 		recipe_book_data.recipes.append_array(imported_data.recipes)
 		RecipeBookManager.save_recipe_book_data()
-		for child in recipe_list.get_children():
-			child.queue_free()
-		init_recipe_book()
+		refresh()
 
 
 func process_string(input : String) -> String:

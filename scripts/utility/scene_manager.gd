@@ -34,6 +34,7 @@ func load_recipe_scene(recipe_data : RecipeData) -> void:
 func load_main_menu() -> void:
 	clear()
 	get_recipe_book().show()
+	get_recipe_book().refresh()
 #	correct_position(scene)
 
 ## Load the recipe edit scene. Pass null if new recipe is added
