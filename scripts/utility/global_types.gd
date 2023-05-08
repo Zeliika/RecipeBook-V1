@@ -105,7 +105,7 @@ static func tag_to_text(tag : Tag) -> String:
 		Tag.SOUP:
 			return "Suppe"
 		Tag.DIP:
-			return "Dip"
+			return "Dip/Aufstrich"
 		Tag.COOKIES:
 			return "Kekse"
 		Tag.CAKE:
