@@ -9,6 +9,11 @@ class_name RecipeBookDisplay
 @onready var text_search_field: LineEdit = %TextSearchField
 @onready var recipe_list: VBoxContainer = %RecipeList
 @onready var tag_selector = %TagSelector
+@onready var import_recipe_button: Button = %ImportRecipeButton
+@onready var export_recipe_button_: Button = %"ExportRecipeButton#"
+@onready var add_recipe_button: Button = %AddRecipeButton
+@onready var delete_recipes_button: Button = %DeleteRecipesButton
+@onready var selection_button: Button = %SelectionButton
 
 ## The recipe book data
 var recipe_book_data : RecipeBookData = RecipeBookManager.get_recipe_book_data()
@@ -68,8 +73,17 @@ func _on_export_recipe_button_pressed() -> void:
 	file_dialog.popup_centered_ratio(1)
 
 func _on_file_dialog_file_selected(path: String) -> void:
+	# case export recipes
 	if file_dialog.file_mode == FileDialog.FILE_MODE_SAVE_FILE:
-		RecipeImporterExporter.export_to_json(recipe_book_data, path)
+		if selection_button.button_pressed:
+			var partial_recipe_book_data = RecipeBookData.new()
+			for child in recipe_list.get_children():
+				if child.is_selected():
+					partial_recipe_book_data.recipes.append(child.recipe_data)
+			RecipeImporterExporter.export_to_json(partial_recipe_book_data, path)
+		else:
+			RecipeImporterExporter.export_to_json(recipe_book_data, path)
+	# case import recipes
 	elif file_dialog.file_mode == FileDialog.FILE_MODE_OPEN_FILE:
 		var imported_data = RecipeImporterExporter.import_from_json(path)
 		recipe_book_data.recipes.append_array(imported_data.recipes)
@@ -112,3 +126,20 @@ func _on_clear_search_button_pressed():
 	for i in range(0,tag_popup.item_count):
 			tag_popup.set_item_checked(i, false)
 	text_search_field.text = ""
+
+
+func _on_selection_button_toggled(button_pressed: bool) -> void:
+	for child in recipe_list.get_children():
+		child.show_selection_button(button_pressed)
+	import_recipe_button.visible = not button_pressed
+	add_recipe_button.visible = not button_pressed
+	delete_recipes_button.visible = button_pressed
+
+
+
+func _on_delete_recipes_button_pressed() -> void:
+	if selection_button.button_pressed:
+		for child in recipe_list.get_children():
+			if child.is_selected():
+				RecipeBookManager.delete_recipes([child.recipe_data])
+		refresh()
