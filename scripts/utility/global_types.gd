@@ -118,6 +118,13 @@ static func tag_to_text(tag : Tag) -> String:
 			return "Backwaren"
 		Tag.GARNISH:
 			return "Beilage"
+		Tag.DRINKS:
+			return "Getränke"
+		Tag.FISH:
+			return "Fisch"
+		Tag.GARNISH:
+			return "Fleisch"
+
 	return "missing tag %s" %tag
 
 static func get_tags_alphabetical() -> Array:
@@ -149,5 +156,8 @@ enum Tag {
 	EXPERIMENTAL = 20,
 	SAUCE = 21,
 	BREAD = 22,
-	GARNISH = 23
+	GARNISH = 23,
+	DRINKS = 24,
+	FISH = 25,
+	MEAT = 26,
 }
