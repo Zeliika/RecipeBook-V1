@@ -78,7 +78,7 @@ func _on_file_dialog_file_selected(path: String) -> void:
 
 
 func process_string(input : String) -> String:
-	return input.to_lower().replace("-"," ")
+	return input.to_lower().replace("-"," ").replace("(", " ").replace(")", " ").replace("/", " ")
 
 func filter_recipes(filter_text : String, filter_tag_list : Array[GlobalTypes.Tag]) -> void:
 	for recipe_preview in recipe_list.get_children():
