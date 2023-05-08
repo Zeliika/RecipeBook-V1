@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://kl58e1sjjuut"]
+[gd_scene load_steps=5 format=3 uid="uid://kl58e1sjjuut"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_preview_display.gd" id="1_ndxjh"]
 [ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="2_pnnq2"]
+[ext_resource type="PackedScene" uid="uid://balcfrrvj15mm" path="res://scenes/tag_display.tscn" id="3_5jg3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s74jr"]
 atlas = ExtResource("2_pnnq2")
@@ -19,6 +20,7 @@ mouse_filter = 1
 theme_type_variation = &"ItemPanel"
 script = ExtResource("1_ndxjh")
 placeholder_image = SubResource("AtlasTexture_s74jr")
+tag_display_scene = ExtResource("3_5jg3g")
 
 [node name="Container" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -32,19 +34,31 @@ offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 40
 
 [node name="RecipeTexture" type="TextureRect" parent="Container"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 expand_mode = 2
 stretch_mode = 5
 
-[node name="RecipeName" type="Label" parent="Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RecipeNameLabel" type="Label" parent="Container/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_type_variation = &"TitelLabel"
 text = "Name"
-horizontal_alignment = 1
+
+[node name="TagPreviewContainer" type="HFlowContainer" parent="Container/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

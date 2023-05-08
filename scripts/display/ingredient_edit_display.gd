@@ -2,6 +2,7 @@ extends HBoxContainer
 
 ## Class to control ingredient edit ui
 
+signal ingredient_selected(index : int, selected : bool)
 
 ## The text field for quantity
 @onready var quantity_text_field: LineEdit = %QuantityTextField
@@ -9,6 +10,7 @@ extends HBoxContainer
 @onready var unit_dropdown: OptionButton = %UnitDropdown
 ## The text field containing the ingredient name
 @onready var name_edit: LineEdit = %NameLabel
+@onready var check_button: CheckButton = %CheckButton
 
 
 func _ready() -> void:
@@ -36,3 +38,11 @@ func get_ingredient_data() -> IngredientData:
 
 func get_button() -> Button:
 	return %Button
+
+## TODO Replace with drag and drop behaviour
+func deselect_ingredient() -> void:
+	check_button.button_pressed = false
+
+## TODO Replace with drag and drop behaviour
+func _on_check_button_toggled(button_pressed: bool) -> void:
+	emit_signal("ingredient_selected", get_index(), button_pressed)

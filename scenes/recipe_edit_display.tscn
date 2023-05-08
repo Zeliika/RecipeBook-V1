@@ -73,22 +73,40 @@ text = "Zutaten:"
 layout_mode = 2
 theme_type_variation = &"SubMarginContainer"
 
-[node name="Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="IngredientListContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container"]
+[node name="IngredientListContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AddIngredientButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container"]
+[node name="AddIngredientButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/Container"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 icon = SubResource("AtlasTexture_a66fo")
 expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="UpButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Up"
+
+[node name="DownButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Down"
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,7 +150,9 @@ icon = SubResource("AtlasTexture_c6iaw")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/Container/AddIngredientButton" to="." method="_on_add_ingredient_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/Container/AddIngredientButton" to="." method="_on_add_ingredient_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/DownButton" to="." method="_on_down_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

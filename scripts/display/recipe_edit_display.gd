@@ -16,6 +16,8 @@ var ingredient_edit_display_scene : PackedScene = preload("res://scenes/ingredie
 
 var tag_popup : PopupMenu
 
+var currently_selected : int = -1
+
 func _ready() -> void:
 	## initialize dropdown with values from unit enum
 	tag_popup = tag_selector.get_popup()
@@ -55,6 +57,18 @@ func add_ingredient_edit_line(ingredient : IngredientData) -> void:
 	ingredient_list_container.add_child(display)
 	display.init(ingredient)
 	display.get_button().connect("pressed",delete_ingredient_edit_line.bind(display))
+	display.connect("ingredient_selected", on_ingredient_selected)
+
+
+## TODO Replace with drag and drop behaviour
+func on_ingredient_selected(index : int, selected : bool) -> void:
+	if selected:
+		for child in ingredient_list_container.get_children():
+			if child.get_index() != index:
+				child.deselect_ingredient()
+		currently_selected = index
+	else:
+		currently_selected = -1
 
 func delete_ingredient_edit_line(ingredient_edit_line : Control = null) -> void:
 	if ingredient_edit_line == null:
@@ -102,12 +116,22 @@ func _on_save_button_pressed() -> void:
 	recipe_data.description = description
 	RecipeBookManager.save_recipe_book_data()
 	SceneManager.load_recipe_scene(recipe_data)
-#TODO save recipe book
-
 
 
 func _on_add_ingredient_button_pressed() -> void:
 	add_ingredient_edit_line(null)
 
 
+## TODO Replace with drag and drop behaviour
+func _on_up_button_pressed() -> void:
+	print(currently_selected)
+	if currently_selected > 0:
+		ingredient_list_container.move_child(ingredient_list_container.get_child(currently_selected), currently_selected - 1)
+		currently_selected -= 1
 
+## TODO Replace with drag and drop behaviour
+func _on_down_button_pressed() -> void:
+	print(currently_selected)
+	if currently_selected < ingredient_list_container.get_child_count() - 1 and currently_selected >= 0:
+		ingredient_list_container.move_child(ingredient_list_container.get_child(currently_selected), currently_selected + 1)
+		currently_selected += 1
