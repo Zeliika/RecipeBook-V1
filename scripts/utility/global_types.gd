@@ -122,7 +122,7 @@ static func tag_to_text(tag : Tag) -> String:
 			return "Getränke"
 		Tag.FISH:
 			return "Fisch"
-		Tag.GARNISH:
+		Tag.MEAT:
 			return "Fleisch"
 
 	return "missing tag %s" %tag
