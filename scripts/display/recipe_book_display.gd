@@ -22,12 +22,6 @@ var tag_popup : PopupMenu
 ## contruct ui when scene is loaded
 func _ready() -> void:
 	init_recipe_book()
-	## initialize list of previews for recipes stored on the recipe book
-	recipe_book_data.recipes.sort_custom(func (a, b): return a.recipe_name < b.recipe_name)
-	for recipe_data in recipe_book_data.recipes:
-		var recipe_preview = recipe_preview_scene.instantiate()
-		recipe_list.add_child(recipe_preview)
-		recipe_preview.set_recipe(recipe_data)
 
 	## initialize dropdown with values from unit enum
 	tag_popup = tag_selector.get_popup()
