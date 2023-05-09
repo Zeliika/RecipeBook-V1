@@ -111,7 +111,7 @@ static func tag_to_text(tag : Tag) -> String:
 		Tag.CAKE:
 			return "Kuchen/Torte"
 		Tag.EXPERIMENTAL:
-			return "experimentell"
+			return "zu testen"
 		Tag.SAUCE:
 			return "Soße"
 		Tag.BREAD:
@@ -124,6 +124,8 @@ static func tag_to_text(tag : Tag) -> String:
 			return "Fisch"
 		Tag.MEAT:
 			return "Fleisch"
+		Tag.IN_PROGRESS:
+			return "in Bearbeitung"
 
 	return "missing tag %s" %tag
 
@@ -160,4 +162,5 @@ enum Tag {
 	DRINKS = 24,
 	FISH = 25,
 	MEAT = 26,
+	IN_PROGRESS = 27,
 }
