@@ -8,6 +8,14 @@
 atlas = ExtResource("2_bc7tq")
 region = Rect2(192, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_avxns"]
+atlas = ExtResource("2_bc7tq")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duhdf"]
+atlas = ExtResource("2_bc7tq")
+region = Rect2(320, 64, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pyptb"]
 atlas = ExtResource("2_bc7tq")
 region = Rect2(192, 0, 64, 64)
@@ -80,13 +88,19 @@ icon = SubResource("AtlasTexture_pj2t5")
 expand_icon = true
 
 [node name="ClearSearchButton" type="Button" parent="MarginContainer/VSplitContainer/SearchBar"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+icon = SubResource("AtlasTexture_avxns")
+expand_icon = true
 
 [node name="SelectionButton" type="Button" parent="MarginContainer/VSplitContainer/SearchBar"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 10
 toggle_mode = true
+icon = SubResource("AtlasTexture_duhdf")
+expand_icon = true
 
 [node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/VSplitContainer"]
 layout_mode = 2
@@ -134,8 +148,10 @@ expand_icon = true
 [node name="DeleteRecipesButton" type="Button" parent="MarginContainer/VSplitContainer/VSplitContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 icon = SubResource("AtlasTexture_s1bvo")
+expand_icon = true
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/SearchBar/ApplyFilterButton" to="." method="_on_apply_filter_button_pressed"]
