@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wn71ng00tnoc"]
+[gd_scene load_steps=11 format=3 uid="uid://wn71ng00tnoc"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_book_display.gd" id="1_prxun"]
 [ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="2_bc7tq"]
@@ -73,12 +73,13 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TagSelector" type="MenuButton" parent="MarginContainer/VSplitContainer/SearchBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "Select Tags"
+text = "Tags ⌄"
 flat = false
 
 [node name="ApplyFilterButton" type="Button" parent="MarginContainer/VSplitContainer/SearchBar"]
@@ -98,6 +99,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.2
 toggle_mode = true
 icon = SubResource("AtlasTexture_duhdf")
 expand_icon = true

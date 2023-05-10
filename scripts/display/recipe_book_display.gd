@@ -21,6 +21,7 @@ var tag_popup : PopupMenu
 
 ## contruct ui when scene is loaded
 func _ready() -> void:
+	OS.request_permissions()
 	init_recipe_book()
 
 	## initialize dropdown with values from unit enum
@@ -56,14 +57,16 @@ func _on_add_recipe_button_pressed() -> void:
 
 
 func _on_import_recipe_button_pressed() -> void:
+
 	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_dialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
 	file_dialog.popup_centered_ratio(1.0)
 
 
 
 func _on_export_recipe_button_pressed() -> void:
 	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
-	file_dialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
+	file_dialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
 	file_dialog.set_current_file("recipe_export.json")
 	file_dialog.popup_centered_ratio(1)
 

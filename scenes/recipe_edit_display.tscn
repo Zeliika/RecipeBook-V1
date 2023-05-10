@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d35ltnh6yd5ye"]
+[gd_scene load_steps=10 format=3 uid="uid://d35ltnh6yd5ye"]
 
 [ext_resource type="Script" path="res://scripts/display/recipe_edit_display.gd" id="1_wex3u"]
 [ext_resource type="Texture2D" uid="uid://be6lxtdgpxdg0" path="res://ui/icons.svg" id="2_cqskg"]
@@ -6,6 +6,14 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_a66fo"]
 atlas = ExtResource("2_cqskg")
 region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yrl7"]
+atlas = ExtResource("2_cqskg")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c82xw"]
+atlas = ExtResource("2_cqskg")
+region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3m8r"]
 load_path = "res://.godot/imported/icons.svg-0ee3045dd5ac81814b7c281e8ab0aa82.ctex"
@@ -62,7 +70,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "Select Tags"
+text = "Tags ⌄"
 flat = false
 
 [node name="IngredientTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
@@ -101,12 +109,15 @@ size_flags_vertical = 4
 [node name="UpButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Up"
+icon = SubResource("AtlasTexture_3yrl7")
+icon_alignment = 1
+expand_icon = true
 
 [node name="DownButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Down"
+icon = SubResource("AtlasTexture_c82xw")
+expand_icon = true
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
