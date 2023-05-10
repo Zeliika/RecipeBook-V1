@@ -32,7 +32,7 @@ func _ready() -> void:
 	tag_popup.connect("index_pressed", select_tag)
 
 func init_recipe_book() -> void:
-	recipe_book_data.recipes.sort_custom(func (a, b): return a.recipe_name < b.recipe_name)
+	recipe_book_data.recipes.sort_custom(func(a, b): return Utils.compare_alphabetically(a.recipe_name, b.recipe_name))
 	for recipe_data in recipe_book_data.recipes:
 		var recipe_preview = recipe_preview_scene.instantiate()
 		recipe_list.add_child(recipe_preview)

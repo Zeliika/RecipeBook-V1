@@ -131,7 +131,7 @@ static func tag_to_text(tag : Tag) -> String:
 
 static func get_tags_alphabetical() -> Array:
 	var tags = Tag.values()
-	tags.sort_custom(func(a, b) : return tag_to_text(a) < tag_to_text(b))
+	tags.sort_custom(func(a, b) : return Utils.compare_alphabetically(tag_to_text(a), tag_to_text(b)))
 	return tags
 
 enum Tag {
