@@ -21,6 +21,7 @@ var currently_selected : int = -1
 func _ready() -> void:
 	## initialize dropdown with values from unit enum
 	tag_popup = tag_selector.get_popup()
+	tag_popup.max_size = Vector2i(tag_popup.max_size.x, size.y * 0.8)
 	tag_popup.hide_on_checkable_item_selection = false
 	for tag in GlobalTypes.get_tags_alphabetical():
 		tag_popup.add_check_item(GlobalTypes.tag_to_text(tag), tag)

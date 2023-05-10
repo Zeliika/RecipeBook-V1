@@ -126,6 +126,8 @@ static func tag_to_text(tag : Tag) -> String:
 			return "Fleisch"
 		Tag.IN_PROGRESS:
 			return "in Bearbeitung"
+		Tag.ALCOHOL:
+			return "alkoholisch"
 
 	return "missing tag %s" %tag
 
@@ -163,4 +165,5 @@ enum Tag {
 	FISH = 25,
 	MEAT = 26,
 	IN_PROGRESS = 27,
+	ALCOHOL = 28,
 }
