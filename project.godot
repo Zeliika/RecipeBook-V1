@@ -14,7 +14,9 @@ config/name="Rezeptbuch"
 run/main_scene="res://scenes/recipe_book_display.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.580392, 0.764706, 0.407843, 1)
+boot_splash/image="res://ui/splash.png"
+config/icon="res://ui/app_icon.png"
 
 [autoload]
 
