@@ -44,6 +44,7 @@ func refresh() -> void:
 	for child in recipe_list.get_children():
 			child.queue_free()
 	init_recipe_book()
+	filter_recipes()
 
 func select_tag(index : int) -> void:
 	if index == 0:
@@ -92,28 +93,30 @@ func _on_file_dialog_file_selected(path: String) -> void:
 func process_string(input : String) -> String:
 	return input.to_lower().replace("-"," ").replace("(", " ").replace(")", " ").replace("/", " ")
 
-func filter_recipes(filter_text : String, filter_tag_list : Array[GlobalTypes.Tag]) -> void:
-	for recipe_preview in recipe_list.get_children():
-		var recipe_data = recipe_preview.recipe_data
-		var contains_search : bool = process_string(recipe_data.recipe_name).contains(filter_text)
-		if filter_text == "":
-			contains_search = true
-		for ingredient in recipe_data.ingredients:
-			if process_string(ingredient.ingredient_name).contains(filter_text):
-				contains_search = true
-		for tag in filter_tag_list:
-			if not recipe_data.tags.has(tag):
-				contains_search = false
-		recipe_preview.visible = contains_search
-
-func _on_apply_filter_button_pressed() -> void:
+func filter_recipes() -> void:
 	var search_text_input := text_search_field.text
 	search_text_input = process_string(search_text_input)
 	var tag_list_input : Array[GlobalTypes.Tag] = []
 	for i in range(0, tag_popup.item_count):
 		if tag_popup.is_item_checked(i):
 			tag_list_input.append(tag_popup.get_item_id(i))
-	filter_recipes(search_text_input, tag_list_input)
+
+	for recipe_preview in recipe_list.get_children():
+		var recipe_data = recipe_preview.recipe_data
+		var contains_search : bool = process_string(recipe_data.recipe_name).contains(search_text_input)
+		if search_text_input == "":
+			contains_search = true
+		for ingredient in recipe_data.ingredients:
+			if process_string(ingredient.ingredient_name).contains(search_text_input):
+				contains_search = true
+		for tag in tag_list_input:
+			if not recipe_data.tags.has(tag):
+				contains_search = false
+		recipe_preview.visible = contains_search
+
+func _on_apply_filter_button_pressed() -> void:
+	filter_recipes()
+#	filter_recipes(search_text_input, tag_list_input)
 
 
 
