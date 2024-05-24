@@ -8,3 +8,4 @@ ok_button_text = "Save"
 mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.json")
+show_hidden_files = true

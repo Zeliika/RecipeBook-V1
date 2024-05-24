@@ -21,6 +21,7 @@ var tag_popup : PopupMenu
 
 ## contruct ui when scene is loaded
 func _ready() -> void:
+	print_debug("test")
 	OS.request_permissions()
 	init_recipe_book()
 
